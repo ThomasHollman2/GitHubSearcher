@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">GitHubSearcher</string>
+    <string name="github_searcher">GitHub Searcher</string>
+    <string name="search_for_users">Search for users</string>
+    <string name="username">Username</string>
+    <string name="repo">Repo:</string>
+    <string name="number">##</string>
+    <string name="github_searcher2">GitHub Searcher</string>
+    <string name="username2">username</string>
+    <string name="email">email</string>
+    <string name="location">location</string>
+    <string name="join_date">Join Date</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="biography">Biography</string>
+    <string name="search_for_user_s_repositories">Search for User\'s Repositories</string>
+    <string name="repo_name">Repo Name</string>
+    <string name="forks">forks</string>
+    <string name="stars">stars</string>
 </resources>

@@ -19,14 +19,14 @@
         app:layout_constraintTop_toTopOf="@id/screen1_iv"
         app:layout_constraintBottom_toBottomOf="@id/screen1_iv"
         android:layout_marginLeft="20dp"
-        android:text="Username"
-        android:textSize="20dp"/>
+        android:text="@string/username"
+        android:textSize="20sp"/>
     <TextView
         android:id="@+id/screen1_repo_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Repo:"
-        android:textSize="20dp"
+        android:text="@string/repo"
+        android:textSize="20sp"
         android:layout_marginRight="10dp"
         app:layout_constraintEnd_toStartOf="@id/screen1_repo_number"
         app:layout_constraintTop_toTopOf="@id/screen1_iv"
@@ -35,8 +35,8 @@
         android:id="@+id/screen1_repo_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="##"
-        android:textSize="20dp"
+        android:text="@string/number"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/screen1_iv"
         app:layout_constraintBottom_toBottomOf="@id/screen1_iv"/>

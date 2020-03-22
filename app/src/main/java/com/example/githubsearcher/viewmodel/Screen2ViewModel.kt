@@ -13,26 +13,33 @@ class Screen2ViewModel(val baseUrl: String): ViewModel() {
 
     private val TAG = Screen2ViewModel::class.java.simpleName
     private val nameDataSet: MutableLiveData<NameResponse> = MutableLiveData()
-    private val repoData : MutableLiveData<List<ReposResponse>> = MutableLiveData()
+    private val repoData: MutableLiveData<List<ReposResponse>> = MutableLiveData()
 
-    fun setNameData(dataset: NameResponse){
+    fun setNameData(dataset: NameResponse) {
         Log.d(TAG, "setNameData")
         this.nameDataSet.value = dataset
 
     }
-    fun initUserInfo(login: String){
+
+    fun initUserInfo(login: String) {
         Log.d(TAG, "initUserInfo: " + login)
         val network = Network()
-        network.initRetrofitScreen2(this,login,baseUrl)
+        network.initRetrofitScreen2(this, login, baseUrl)
 
 
     }
-    fun setRepoData(data : List<ReposResponse>){
+
+    fun setRepoData(data: List<ReposResponse>) {
         this.repoData.value = data
     }
+
     fun getRepoData() = repoData
-    fun getNameData() =
-      nameDataSet
+    fun getNameData() = nameDataSet
+    fun searchBar2(searchRepo: String, login: String) {
+        Log.d(TAG, "searchBar2: " + searchRepo)
+        val network = Network()
+        network.initRetrofitRepos(this, searchRepo,login, baseUrl)
 
 
+    }
 }

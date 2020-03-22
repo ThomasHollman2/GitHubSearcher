@@ -40,7 +40,7 @@ class Network( ) {
 
             override fun onResponse(
                 call: Call<NameResponse>,
-                response: retrofit2.Response<NameResponse>) {
+                response: Response<NameResponse>) {
                 Log.d(TAG, "onResponse2")
                 response.body()?.let { viewModel2.setNameData(it) }
             }
@@ -54,7 +54,7 @@ class Network( ) {
 
                 override fun onResponse(
                     call: Call<List<ReposResponse>>,
-                    response: retrofit2.Response<List<ReposResponse>>
+                    response: Response<List<ReposResponse>>
                 ) {
                     response.body()?.let { viewModel2.setRepoData(it) }
                 }
@@ -62,9 +62,20 @@ class Network( ) {
         )
 
     }
-
-
-
+    fun initRetrofitRepos(viewModel2: Screen2ViewModel, repo: String, login: String, baseUrl: String){
+        getApi(baseUrl).getRepos(login, repo).enqueue(
+            object : Callback<List<ReposResponse>>{
+                override fun onFailure(call: Call<List<ReposResponse>>, t: Throwable) {
+                }
+                override fun onResponse(
+                    call: Call<List<ReposResponse>>,
+                    response: Response<List<ReposResponse>>
+                ) {
+                    response.body()?.let { viewModel2.setRepoData(it) }
+                }
+            }
+        )
+    }
     fun getApi(url: String): GitHubApi {
 
         return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
