@@ -1,5 +1,6 @@
-package com.example.githubsearcher.view
+package com.example.githubsearcher.view.Screen1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -10,18 +11,23 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubsearcher.R
 import com.example.githubsearcher.model.SearchResponse
+import com.example.githubsearcher.model.searchItems
+import com.example.githubsearcher.view.Screen2.Screen2Activity
 import com.example.githubsearcher.viewmodel.Screen1ViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG = MainActivity::class.java.simpleName
+    companion object{
+        val userLogin = "USER_LOGIN"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val screen1_adapter = Screen1Adapter({ user : searchItems -> onUserClick(user)})
 
-        val screen1_adapter = Screen1Adapter()
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter= screen1_adapter
 
@@ -71,6 +77,11 @@ class MainActivity : AppCompatActivity() {
 
             }
         )
+    }
+    private fun onUserClick(user : searchItems){
+        val intent = Intent(this, Screen2Activity::class.java)
+        intent.putExtra(userLogin,user.login)
+        startActivity(intent)
     }
 
 }

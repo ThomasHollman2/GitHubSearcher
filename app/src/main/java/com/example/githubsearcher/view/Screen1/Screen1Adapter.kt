@@ -1,15 +1,13 @@
-package com.example.githubsearcher.view
+package com.example.githubsearcher.view.Screen1
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubsearcher.R
-import com.example.githubsearcher.model.Network
-import com.example.githubsearcher.model.SearchResponse
 import com.example.githubsearcher.model.searchItems
 
-class Screen1Adapter:RecyclerView.Adapter<Screen1ViewHolder>() {
+class Screen1Adapter(val clickListener : (searchItems) -> Unit):RecyclerView.Adapter<Screen1ViewHolder>() {
     private val TAG = Screen1Adapter::class.java.simpleName
     var dataSet: List<searchItems>? = null
         set(value) {
@@ -17,10 +15,14 @@ class Screen1Adapter:RecyclerView.Adapter<Screen1ViewHolder>() {
             notifyDataSetChanged()
         }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Screen1ViewHolder =
-        Screen1ViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.screen1_rv,
-            parent,
-            false))
+        Screen1ViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(
+                    R.layout.screen1_rv,
+                    parent,
+                    false
+                )
+        )
 
 
     override fun getItemCount(): Int {
@@ -31,6 +33,6 @@ class Screen1Adapter:RecyclerView.Adapter<Screen1ViewHolder>() {
     override fun onBindViewHolder(holder: Screen1ViewHolder, position: Int) {
         Log.d(TAG, "onBindViewHolder" + dataSet?.get(position))
         dataSet?.get(position)?.let {
-            holder.onBind(it)}
+            holder.onBind(it, clickListener)}
     }
 }

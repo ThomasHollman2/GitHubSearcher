@@ -12,6 +12,7 @@ interface GitHubApi {
     @GET("users/{userName}")
     fun getUser(@Path("userName")userName: String): Call<NameResponse>
 
-    @GET("users/{userName}/repos")
-    fun getRepos(@Path("userName")userName: String): Call<ReposResponse>
+    @GET("users/{user_name}/{repo}")
+    fun getRepos(@Path("user_name") user_name: String,
+                     @Path("repo") path : String) : Call<List<ReposResponse>>
 }
